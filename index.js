@@ -109,32 +109,22 @@ Aşağıdakileri oyun isimli fonksiyonu kullanarak yap.
 OYUNUN KURALLARI: Makas Kağıdı yener| Kağıt Taşı yener | Taş Makas'ı yener | veya beraberlik olur.
 */
 
-function oyun(oyuncu, bilgisayar) {
-  if (oyuncu === bilgisayar) {
-    console.log("Beraberlik");
-  }
-  else if ((oyuncu === "Taş" && bilgisayar === "Kağıt") || (oyuncu === "Kağıt" && bilgisayar === "Makas")
-    || (oyuncu === "Makas" && bilgisayar === "Taş"))
-    console.log("Kaybettin!");
-  else
-    console.log("Kazandın!");
-}
-oyun("Taş", bilgisayarinSecimi());
-
-function bilgisayarinSecimi() {
-  let rastgele = Math.random();
-  // console.log(rastgele);
-  if (rastgele < 0.33) {
-    return "Taş";
-  }
-  else if (rastgele > 0.33 && rastgele < 0.66) {
-    return "Kağıt";
-  }
-  else if (rastgele > 0.66 && rastgele < 1) {
-    return "Makas";
+function oyun(kullaniciSecimi, bilgisayarSecimi) {
+  if (kullaniciSecimi === bilgisayarSecimi) {
+    return "Beraberlik";
+  } else if (kullaniciSecimi === "Taş" && bilgisayarSecimi === "Makas" ||
+    kullaniciSecimi === "Kağıt" && bilgisayarSecimi === "Taş" ||
+    kullaniciSecimi === "Makas" && bilgisayarSecimi === "Kağıt") {
+    return "Kazandın!";
+  } else {
+    return "Kaybettin!";
   }
 }
-
+let kullaniciSecimi = "Taş";
+let bilgisayarSecimi = bilgisayarinSecimi();
+console.log("Kullanıcı: " + kullaniciSecimi);
+console.log("Bilgisayar: " + bilgisayarSecimi);
+console.log(oyun(kullaniciSecimi, bilgisayarSecimi));
 
 // Şimdi Taş, Kağıt, Makas oyununu bilgisayara karşı oynayalım!
 /*
@@ -154,6 +144,16 @@ ve sonucu console'a yazdırın.
 */
 
 
+function bilgisayarinSecimi() {
+  let rastgeleSayi = Math.random();
+  if (rastgeleSayi < 0.33) {
+    return "Taş";
+  } else if (rastgeleSayi < 0.66) {
+    return "Kağıt";
+  } else {
+    return "Makas";
+  }
+}
 
 
 
@@ -229,18 +229,21 @@ Aşağdakileri notHesapla fonksiyonunda yap.
 */
 
 function notHesapla(not) {
-  if (not >= 90 && not <= 100) { 
-    console.log("A aldın."); }
-  else if (not >= 80 && not <= 89) { console.log("B aldın."); 
-}
+  if (not >= 90 && not <= 100) {
+    console.log("A aldın.");
+  }
+  else if (not >= 80 && not <= 89) {
+    console.log("B aldın.");
+  }
   else if (not >= 70 && not <= 79) {
     console.log("C aldın");
-  } 
-  else if (not >= 60 && not <= 69)
-   { console.log("D aldın")
-  } 
-  else { console.log("F aldın."); 
-}
+  }
+  else if (not >= 60 && not <= 69) {
+    console.log("D aldın") ;
+  }
+  else {
+    console.log("F aldın.");
+  }
 
 }
 notHesapla(79)
